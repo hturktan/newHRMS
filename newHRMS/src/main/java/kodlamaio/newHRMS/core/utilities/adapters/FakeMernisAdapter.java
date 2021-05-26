@@ -1,11 +1,13 @@
 package kodlamaio.newHRMS.core.utilities.adapters;
 
+import java.util.Date;
+
 import kodlamaio.newHRMS.mernis.MernisFake;
 
 public class FakeMernisAdapter implements ValidationService{
 
 	@Override
-	public boolean validateByFakeMernis(String natioanalId, String firstName, String lastName, String dateOfBirth) {
+	public boolean validateByFakeMernis(String natioanalId, String firstName, String lastName, Date dateOfBirth) {
 		
 		MernisFake fake = new MernisFake();
 		

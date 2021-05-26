@@ -31,7 +31,7 @@ public class Employer extends User{
 		
 	}
 
-	public Employer(int userId, String companyName, String webAddress, String phoneNumber) {
+	public Employer(String companyName, String webAddress, String phoneNumber) {
 		super();
 //		this.userId = userId;
 		this.companyName = companyName;
