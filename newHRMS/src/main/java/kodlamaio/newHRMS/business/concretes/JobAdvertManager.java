@@ -38,7 +38,7 @@ public class JobAdvertManager implements JobAdvertService {
 
 	@Override
 	public DataResult<JobAdvert> getById(int id) {
-		
+		//https://stackoverflow.com/questions/52656517/no-serializer-found-for-class-org-hibernate-proxy-pojo-bytebuddy-bytebuddyinterc
 		return new SuccessDataResult<JobAdvert>(this.jobAdvertDao.getById(id));
 	}
 
