@@ -1,15 +1,27 @@
 package kodlamaio.newHRMS.entities.concretes;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "candidates")
 @PrimaryKeyJoinColumn(name = "user_id")
 public class Candidate extends User{
@@ -31,58 +43,33 @@ public class Candidate extends User{
 	@Column(name = "date_of_birth", nullable = false)
 	private Date dateOfBirth;
 	
-	public Candidate() {
-		
-	}
-
-	public Candidate(String firstName, String lastName, String nationalId, Date dateOfBirth) {
-		super();
-//		this.userId = userId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.nationalId = nationalId;
-		this.dateOfBirth = dateOfBirth;
-	}
-
-//	public int getUserId() {
-//		return userId;
-//	}
-//
-//	public void setUserId(int userId) {
-//		this.userId = userId;
-//	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getNationalId() {
-		return nationalId;
-	}
-
-	public void setNationalId(String nationalId) {
-		this.nationalId = nationalId;
-	}
-
-	public Date getDateOfBirth() {
-		return dateOfBirth;
-	}
-
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
+	@JsonIgnore
+	@OneToMany(mappedBy = "candidate", cascade = {CascadeType.ALL})
+	private List<CandidateCoverLetter> candidateCoverLetters;
 	
+	@JsonIgnore
+	@OneToMany(mappedBy = "candidate", cascade = {CascadeType.ALL})
+	private List<CandidateEducation> candidateEducations;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "candidate", cascade = {CascadeType.ALL})
+	private List<CandidateExperience> candidateExperiences;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "candidate", cascade = {CascadeType.ALL})
+	private List<CandidateForeignLanguage> candidateForeignLanguages;
+
+	@JsonIgnore
+	@OneToOne(mappedBy = "candidate", fetch=FetchType.LAZY)
+	private CandidateImage candidateImage;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "candidate", cascade = {CascadeType.ALL})
+	private List<CandidateSkill> candidateSkills;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "candidate", cascade = {CascadeType.ALL})
+	private List<CandidateLink> candidateLinks;
+
 	
 }
