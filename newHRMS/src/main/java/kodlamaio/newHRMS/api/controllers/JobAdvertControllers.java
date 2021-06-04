@@ -70,5 +70,5 @@ public class JobAdvertControllers {
 		
 		return this.jobAdvertService.getAllOpenJobAdvertByEmployer(id);
 	}
-	
+		
 }

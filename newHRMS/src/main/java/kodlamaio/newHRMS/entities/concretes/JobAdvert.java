@@ -78,5 +78,5 @@ public class JobAdvert {
 	@ManyToOne
 	@JoinColumn(name = "employer_id")
 	private Employer employer;
-
+	
 }

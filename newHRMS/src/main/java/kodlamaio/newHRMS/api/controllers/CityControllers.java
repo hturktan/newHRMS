@@ -32,5 +32,5 @@ public class CityControllers {
 		
 		return this.cityService.getAll();
 	}
-
+	
 }
