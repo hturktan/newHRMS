@@ -3,6 +3,7 @@ package kodlamaio.newHRMS.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +15,7 @@ import kodlamaio.newHRMS.core.utilities.results.DataResult;
 import kodlamaio.newHRMS.core.utilities.results.Result;
 import kodlamaio.newHRMS.entities.concretes.Employer;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/employers")
 public class EmployersController {
@@ -29,6 +31,11 @@ public class EmployersController {
 	@PostMapping("/add")
 	public Result add(@RequestBody Employer employer) {
 		return this.employerService.add(employer);
+	}
+	
+	@PostMapping("/delete")
+	public Result delete(int employerId) {
+		return this.employerService.delete(employerId);
 	}
 	
 	@GetMapping("/getall")

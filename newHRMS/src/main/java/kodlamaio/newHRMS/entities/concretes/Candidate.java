@@ -1,6 +1,5 @@
 package kodlamaio.newHRMS.entities.concretes;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -27,10 +26,9 @@ import lombok.NoArgsConstructor;
 public class Candidate extends User{
 	
 //	@Id
-//	@GeneratedValue
-//	@Column(name = "user_id")
+//	@GeneratedValue//	@Column(name = "user_id")
 //	private int userId;
-	
+		
 	@Column(name = "first_name", nullable = false)
 	private String firstName;
 	
@@ -41,7 +39,7 @@ public class Candidate extends User{
 	private String nationalId;
 	
 	@Column(name = "date_of_birth", nullable = false)
-	private Date dateOfBirth;
+	private java.util.Date dateOfBirth;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "candidate", cascade = {CascadeType.ALL})
@@ -70,6 +68,4 @@ public class Candidate extends User{
 	@JsonIgnore
 	@OneToMany(mappedBy = "candidate", cascade = {CascadeType.ALL})
 	private List<CandidateLink> candidateLinks;
-
-	
 }

@@ -18,6 +18,7 @@ import kodlamaio.newHRMS.entities.concretes.Candidate;
 import kodlamaio.newHRMS.entities.concretes.CandidateImage;
 
 
+
 @RestController
 @RequestMapping(name = "/api/candidateimages")
 public class CandidateImagesController {
@@ -44,7 +45,7 @@ public class CandidateImagesController {
 	public Result add(@RequestParam(value = "id") int candidateId, @RequestParam(value = "imageFile") MultipartFile imageFile) {
 		Candidate candidate = (Candidate) this.candidateService.getById(candidateId).getData();
 		CandidateImage candidateImage = new CandidateImage();
-		candidateImage.setCandidate(candidate);
+		candidateImage.setId(candidateId);
 		return this.candidateImageService.add(candidateImage, imageFile);
 	}
 		    

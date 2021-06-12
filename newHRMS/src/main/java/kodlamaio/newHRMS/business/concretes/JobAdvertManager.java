@@ -29,6 +29,13 @@ public class JobAdvertManager implements JobAdvertService {
 		this.jobAdvertDao.save(jobAdvert);
 		return new SuccessResult("Job advert is added");
 	}
+	
+	@Override
+	public Result delete(int jobAdvertId) {
+		this.jobAdvertDao.deleteById(jobAdvertId);
+		return new SuccessResult("Job advert is deleted");
+	}
+
 
 	@Override
 	public Result adjustFromOpenToClose(int id) {
@@ -73,6 +80,7 @@ public class JobAdvertManager implements JobAdvertService {
 		
 		return new SuccessDataResult<List<JobAdvert>>(this.jobAdvertDao.getAllOpenJobAdvertByEmployer(id));
 	}
+
 
 	
 }

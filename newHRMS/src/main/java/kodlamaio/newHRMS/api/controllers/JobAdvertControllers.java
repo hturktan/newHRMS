@@ -3,6 +3,7 @@ package kodlamaio.newHRMS.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import kodlamaio.newHRMS.core.utilities.results.SuccessDataResult;
 import kodlamaio.newHRMS.core.utilities.results.SuccessResult;
 import kodlamaio.newHRMS.entities.concretes.JobAdvert;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/jobadverts")
 public class JobAdvertControllers {
@@ -32,6 +34,12 @@ public class JobAdvertControllers {
 	public Result add(@RequestBody JobAdvert jobAdvert) {
 		
 		return this.jobAdvertService.add(jobAdvert);
+	}
+	
+	@PostMapping("/delete")
+	public Result delete(int jobAdvertId) {
+		
+		return this.jobAdvertService.delete(jobAdvertId);
 	}
 	
 	@PostMapping("/adjustfromopentoclose")

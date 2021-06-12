@@ -25,5 +25,6 @@ public class UsersController {
 	@GetMapping("/getall")
 	public DataResult<List<User>> getAll(){
 		return this.userService.getAll();
-	}
+	} 
+	
 }

@@ -9,6 +9,7 @@ import kodlamaio.newHRMS.entities.concretes.JobAdvert;
 public interface JobAdvertService {
 	
 	Result add(JobAdvert jobAdvert);
+	Result delete(int jobAdvertId);
 	Result adjustFromOpenToClose(int id);
 	DataResult<JobAdvert> getById(int id);	
 	DataResult<List<JobAdvert>> getAll();

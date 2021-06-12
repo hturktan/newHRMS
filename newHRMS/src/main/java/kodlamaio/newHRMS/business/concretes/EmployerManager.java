@@ -37,5 +37,11 @@ public class EmployerManager implements EmployerService{
 		return new SuccessResult("Employer has been added");
 	}
 
+	@Override
+	public Result delete(int employerId) {
+		this.employerDao.deleteById(employerId);
+		return new SuccessResult("Employer has been deleted");
+	}
+
 
 }
